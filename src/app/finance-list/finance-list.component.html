@@ -1,0 +1,66 @@
+<div>
+    <h1>
+      Finanças
+    </h1>
+
+    <form [formGroup]="financeForm" (submit)="onSubmit()">
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput autocomplete="off" formControlName="name"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>
+                <mat-icon>workspaces</mat-icon> Tipo
+            </mat-label>
+            <mat-select formControlName="typeId">
+                <mat-optgroup label="Receita" >
+                    <ng-container *ngFor="let type of types">
+                        <mat-option *ngIf="type.category.name === 'CATEGORY_INCOME'" [value]="type.id">
+                            {{type.name}}
+                        </mat-option>
+                    </ng-container>
+                </mat-optgroup>
+                <mat-optgroup label="Despesa" >
+                    <ng-container *ngFor="let type of types">
+                        <mat-option *ngIf="type.category.name === 'CATEGORY_EXPENSE'" [value]="type.id">
+                            {{type.name}}
+                        </mat-option>
+                    </ng-container>
+                </mat-optgroup>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Valor</mat-label>
+            <input matInput autocomplete="off" type="number" min="0" formControlName="value"/>
+        </mat-form-field>
+
+        <button mat-icon-button type="submit">
+            <mat-icon *ngIf="!finance">add</mat-icon>
+            <mat-icon *ngIf="finance">save</mat-icon>
+        </button>
+
+    </form>
+    
+    <mat-list>
+        <mat-list-item *ngFor="let finance of finances">
+            <div class="px-3">
+                {{finance.name}}
+            </div>
+            <div class="px-3">
+                {{finance.value | currency:'BRL' }}
+            </div>
+            <div class="px-3">
+                {{finance.type.name}}
+            </div>
+            <button mat-icon-button (click)="setFinance(finance)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete(finance)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-list-item>
+    </mat-list>
+</div>

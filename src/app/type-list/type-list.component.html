@@ -1,0 +1,47 @@
+<div>
+  <h1>
+    Tipos
+  </h1>
+
+  <form [formGroup]="typeForm" (submit)="onSubmit()">
+        
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput autocomplete="off" formControlName="name"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>
+            Categoria
+        </mat-label>
+        <mat-select formControlName="categoryId">
+            <mat-option [value]=1>Receita</mat-option>
+            <mat-option [value]=2>Despesa</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-icon-button type="submit">
+        <mat-icon *ngIf="!type">add</mat-icon>
+        <mat-icon *ngIf="type">save</mat-icon>
+    </button>
+
+  </form> 
+
+  <mat-list>
+    <mat-list-item *ngFor="let type of types" class="container">
+        <div class="px-3">
+            {{type.name}}
+        </div>
+        <div class="px-3">
+            <span *ngIf="type.category.id === 1">Receita</span>
+            <span *ngIf="type.category.id === 2">Despesa</span>
+        </div>
+        <button mat-icon-button (click)="setType(type)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(type)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-list-item>
+  </mat-list>
+</div>
