@@ -54,6 +54,14 @@
               ],
               "outputHashing": "all"
             },
+            "homolog": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.homolog.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -73,6 +81,9 @@
             },
             "development": {
               "browserTarget": "moolah-frontend:build:development"
+            },
+            "homolog": {
+              "browserTarget": "moolah-frontend:build:homolog"
             }
           },
           "defaultConfiguration": "development"

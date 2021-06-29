@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
-const API_URL_TYPES = "http://localhost:8080/types/";
+const API_URL_TYPES = environment.apiUrl + "types/";
 
 @Injectable({
   providedIn: 'root'
