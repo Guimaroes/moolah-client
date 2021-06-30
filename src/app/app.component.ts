@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { TokenStorageService } from './_services/token-storage.service';
 })
 export class AppComponent implements OnInit {
   
+  name = environment.name;
   isLoggedIn = false;
   username?: string;
 
