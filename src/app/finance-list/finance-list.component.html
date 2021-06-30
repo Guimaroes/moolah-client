@@ -49,11 +49,13 @@
             <div class="px-3">
                 {{finance.name}}
             </div>
-            <div class="px-3">
-                {{finance.value | currency:'BRL' }}
-            </div>
+            |
             <div class="px-3">
                 {{finance.type.name}}
+            </div>
+            |
+            <div class="px-3">
+                {{finance.value | currency:'BRL' }}
             </div>
             <button mat-icon-button (click)="setFinance(finance)">
                 <mat-icon>edit</mat-icon>
